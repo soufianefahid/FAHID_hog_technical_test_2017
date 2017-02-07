@@ -16,7 +16,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="header-link mdl-navigation__link" href="">Créer un compte</a>
+        <a class="header-link mdl-navigation__link" href="create.php">Créer un compte</a>
       </nav>
     </div>
   </header>

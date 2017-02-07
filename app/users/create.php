@@ -16,7 +16,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="header-link mdl-navigation__link" href="">Login</a>
+        <a class="header-link mdl-navigation__link" href="login.php">Login</a>
       </nav>
     </div>
   </header>
@@ -29,40 +29,46 @@
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="login">
             <label class="mdl-textfield__label" for="login">Login</label>
+            <span class="mdl-textfield__error">Valeur incorrecte</span>
           </div>
         </div>
         <div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="password" id="password">
             <label class="mdl-textfield__label" for="password">Mot de passe</label>
+            <span class="mdl-textfield__error">Valeur incorrecte</span>
           </div>
         </div>
         <div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="password" id="confirm_password">
             <label class="mdl-textfield__label" for="confirm_password">Confirmer le mot de passe</label>
+            <span class="mdl-textfield__error">Confirmation différente du mot de passe</span>
           </div>
         </div>
         <div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="email">
+            <input class="mdl-textfield__input" type="text" id="email" pattern=".+@.+\..+">
             <label class="mdl-textfield__label" for="email">Email</label>
+            <span class="mdl-textfield__error">Valeur incorrecte</span>
           </div>
         </div>
         <div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="nom">
             <label class="mdl-textfield__label" for="nom">Nom</label>
+            <span class="mdl-textfield__error">Valeur incorrecte</span>
           </div>
         </div>
         <div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="prenom">
             <label class="mdl-textfield__label" for="prenom">Prénom</label>
+            <span class="mdl-textfield__error">Valeur incorrecte</span>
           </div>
         </div>
         <div>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-connect">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-create">
             Créer
           </button>
         </div>
@@ -74,7 +80,7 @@
 <script type="text/javascript">
   $(function() {
 
-    $("#create-btn").on("click", function() {
+    $(".btn-create").on("click", function() {
       var $login = $("#login");
       var $password = $("#password");
       var $confirm_password = $("#confirm_password");
@@ -99,11 +105,11 @@
       if( !password ) {
         withErrors = true;
         $password.closest(".mdl-textfield").addClass("is-invalid");
-      }
-
-      if( !confirm_password || confirm_password !== password ) {
-        withErrors = true;
-        $confirm_password.closest(".mdl-textfield").addClass("is-invalid");
+      } else {
+        if( !confirm_password || confirm_password !== password ) {
+          withErrors = true;
+          $confirm_password.closest(".mdl-textfield").addClass("is-invalid");
+        }
       }
 
       if( !email ) {
