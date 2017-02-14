@@ -1,5 +1,5 @@
 <?php
-$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/hog_technical_test_2017';
+$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/hog_technical_test_2017_web';
 ?>
 
 <div class="mdl-layout__drawer">
