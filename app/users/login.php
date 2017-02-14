@@ -16,7 +16,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="header-link mdl-navigation__link" href="create.php">Créer un compte</a>
+        <a class="header-link mdl-navigation__link" href="signup.php">Créer un compte</a>
       </nav>
     </div>
   </header>
@@ -72,25 +72,24 @@
         return false;
       }
       
-      return true;
-
       $.ajax({
-        url: 'http://localhost:8080/hog_technical_test_2017_api/users/create',
+        url: 'http://localhost:8080/hog_technical_test_2017_api/authentification',
         data: {
           login : login,
-          password : password,
-          email :  email,
-          nom : nom,
-          prenom : prenom
+          password : password
         },
         success: function(data, status, jqXHR ) {
           console.log(status);
           console.log(data);
+
+          document.cookie = "hog_accessToken="+data.token+"; path=/";
+          document.cookie = "hog_userID="+data.id+"; path=/";
           
-          window.location.href = $("#users-list").attr("href");
+          window.location.href = "../conversations/list.php";
         },
         error: function(jqXHR, status, errorThrown ) {
           console.log("Error : ", status, "Reason : ", errorThrown);
+          alert(errorThrown);
         },
         method: 'GET'
       });

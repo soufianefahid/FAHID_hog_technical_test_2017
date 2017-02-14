@@ -80,7 +80,9 @@
 <script type="text/javascript">
   $(function() {
 
-    $(".btn-create").on("click", function() {
+    $(".btn-create").on("click", function(e) {
+      e.preventDefault();
+
       var $login = $("#login");
       var $password = $("#password");
       var $confirm_password = $("#confirm_password");
@@ -129,8 +131,6 @@
 
       if( withErrors ) return false;
 
-      return true;
-
       $.ajax({
         url: 'http://localhost:8080/hog_technical_test_2017_api/users/create',
         data: {
@@ -144,7 +144,7 @@
           console.log(status);
           console.log(data);
           
-          window.location.href = $("#users-list").attr("href");
+          window.location.href = "login.php";
         },
         error: function(jqXHR, status, errorThrown ) {
           console.log("Error : ", status, "Reason : ", errorThrown);
